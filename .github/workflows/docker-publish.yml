@@ -2,6 +2,9 @@ name: docker
 
 on:
     push:
+        branches:
+            - main
+            - master
         tags:
             - "v*.*.*"
     schedule:
@@ -64,7 +67,7 @@ jobs:
                   path: image_amd64.tar
 
     build_arm64:
-        runs-on: macos-14
+        runs-on: ubuntu-20.04-arm
         permissions:
             id-token: write
             packages: write
@@ -75,12 +78,6 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-
-            - name: Brew install docker
-              run: brew install docker
-
-            - name: Brew install docker-buildx
-              run: brew install docker-buildx
 
             - name: Install Docker BuildX
               uses: docker/setup-buildx-action@v2
