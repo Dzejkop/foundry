@@ -43,7 +43,7 @@ jobs:
                     echo "docker_tags=${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:nightly,${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:nightly-${GITHUB_SHA}" >> $GITHUB_OUTPUT
                   elif [[ "${GITHUB_REF##*/}" == "main" ]] || [[ ${GITHUB_REF##*/} == "master" ]]; then
                     echo "manual trigger from master/main branch, assigning latest tag"
-                    echo "docker_tags=${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:${GITHUB_REF##*/},${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:latest" >> $GITHUB_OUTPUT
+                    echo "docker_tags=${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
                   else
                     echo "Neither scheduled nor manual release from main branch. Just tagging as branch name"
                     echo "docker_tags=${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
@@ -93,7 +93,7 @@ jobs:
                     echo "docker_tags=${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:nightly,${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:nightly-${GITHUB_SHA}" >> $GITHUB_OUTPUT
                   elif [[ "${GITHUB_REF##*/}" == "main" ]] || [[ ${GITHUB_REF##*/} == "master" ]]; then
                     echo "manual trigger from master/main branch, assigning latest tag"
-                    echo "docker_tags=${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:${GITHUB_REF##*/},${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:latest" >> $GITHUB_OUTPUT
+                    echo "docker_tags=${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
                   else
                     echo "Neither scheduled nor manual release from main branch. Just tagging as branch name"
                     echo "docker_tags=${{ env.REGISTRY }}/${{ env.LOWER_REPO }}:${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
